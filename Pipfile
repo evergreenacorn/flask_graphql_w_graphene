@@ -14,6 +14,7 @@ flask-graphql = "*"
 flask-migrate = "*"
 flask-sqlalchemy = "*"
 python-dotenv = "*"
+flask-script = "*"
 
 [dev-packages]
 
