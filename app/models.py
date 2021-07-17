@@ -6,11 +6,10 @@ from sqlalchemy.orm import (
     backref, relationship, declarative_mixin,
     declared_attr
 )
-from datetime import datetime
 from app import db
+from datetime import datetime
 
 
-# Describe your models here
 @declarative_mixin
 class StandartModelMixin:
     id = Column(Integer, primary_key=True)
@@ -40,9 +39,12 @@ class Role(StandartModelMixin, TimestampMixin, db.Model): ...
 
 
 class Employee(StandartModelMixin, TimestampMixin, db.Model):
+    __tablename__ = 'employee'
+    id = id = Column(Integer, primary_key=True)
+    name = Column(String)
     hired_on = Column(DateTime, default=func.now())
     department_id = Column(Integer, ForeignKey('department.id'))
-    role_id = Column(Integer, ForeignKey('roles.role_id'))
+    role_id = Column(Integer, ForeignKey('role.id'))
     department = relationship(
         Department,
         backref=backref(
